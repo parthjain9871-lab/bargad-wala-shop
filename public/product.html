@@ -1,37 +1,25 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <title>Product</title>
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
-  <div id="product"></div>
+<div class="product">
+  <img src="/uploads/${p.image}">
+  <div class="product-details">
+    <h2>${p.name}</h2>
+    <div class="price">₹${p.price}</div>
+    <div class="mrp">MRP ₹${p.mrp}</div>
 
-<script>
-const id = new URLSearchParams(window.location.search).get("id");
-fetch(`/api/product/${id}`)
-  .then(r => r.json())
-  .then(p => {
-    document.getElementById("product").innerHTML = `
-      <img src="/uploads/${p.image}">
-      <h2>${p.name}</h2>
-      <p>MRP: ₹${p.mrp}</p>
-      <p>Price: ₹${p.price}</p>
-      <a class="buy"
-        href="https://wa.me/919425182101?text=${encodeURIComponent(
-          `Hello Bargad Wala Shop 👋
-I want to buy this product:
+    <a class="buy"
+      href="https://wa.me/919425182101?text=${encodeURIComponent(
+        `Hello Bargad Wala Shop 👋
+I want to buy:
 
-Product: ${p.name}
-MRP: ₹${p.mrp}
+${p.name}
 Offer Price: ₹${p.price}
 
 Link: ${window.location.href}`
-        )}">
-        Buy on WhatsApp
-      </a>
-    `;
-  });
-</script>
-</body>
-</html>
+      )}">
+      🟢 Buy on WhatsApp
+    </a>
+
+    <div class="trust">
+      Trusted shop since 1966
+    </div>
+  </div>
+</div>
