@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Upload Product</title>
+</head>
+<body>
+  <h2>Upload New Arrival</h2>
+  <form action="/api/upload" method="post" enctype="multipart/form-data">
+    <input name="name" placeholder="Product Name" required><br>
+    <input name="mrp" placeholder="MRP" required><br>
+    <input name="price" placeholder="Discounted Price" required><br>
+    <input type="file" name="image" required><br><br>
+    <button>Upload</button>
+  </form>
+</body>
+</html>
