@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Product</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="product"></div>
+
+<script>
+const id = new URLSearchParams(window.location.search).get("id");
+fetch(`/api/product/${id}`)
+  .then(r => r.json())
+  .then(p => {
+    document.getElementById("product").innerHTML = `
+      <img src="/uploads/${p.image}">
+      <h2>${p.name}</h2>
+      <p>MRP: ₹${p.mrp}</p>
+      <p>Price: ₹${p.price}</p>
+      <a class="buy"
+        href="https://wa.me/919425182101?text=${encodeURIComponent(
+          `Hello Bargad Wala Shop 👋
+I want to buy this product:
+
+Product: ${p.name}
+MRP: ₹${p.mrp}
+Offer Price: ₹${p.price}
+
+Link: ${window.location.href}`
+        )}">
+        Buy on WhatsApp
+      </a>
+    `;
+  });
+</script>
+</body>
+</html>
